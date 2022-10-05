@@ -8,4 +8,4 @@
 
 ## Contributers
 
-Abigail Queen, Alexus Christensen, Graciela Mejia, Lacey Aguigam, Renee Hamlin
+Abigail Queen, Alexus Christensen, Graciela Mejia, Lacey Aguigam, Renee Hamlin, Catherine Cunningham
