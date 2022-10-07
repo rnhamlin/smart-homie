@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS homies;
+CREATE DATABASE homies;
+USE homies;
