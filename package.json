@@ -1,0 +1,24 @@
+{
+  "name": "smart-homie",
+  "version": "1.0.0",
+  "description": "## Description",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rnhamlin/smart-homie.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rnhamlin/smart-homie/issues"
+  },
+  "homepage": "https://github.com/rnhamlin/smart-homie#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
