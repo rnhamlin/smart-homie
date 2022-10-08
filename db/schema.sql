@@ -25,5 +25,3 @@ CREATE TABLE student (
     first_name VARCHAR(30) NOT NULL,
     grade VARCHAR(50),
 );
-
-

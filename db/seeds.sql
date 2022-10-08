@@ -5,7 +5,7 @@ VALUES
   ('Addition', 'Math'),
   ('Subtraction', 'Math'),
   ('Geometry', 'Math'),
-  ('Geography', 'History - Social Studies'),
+  ('Geography', 'History-Social Studies'),
   ('Painting', 'Arts'),
   ('Biology', 'Science'),
   ('Typing', 'Computer Science');
