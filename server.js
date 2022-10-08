@@ -1,6 +1,6 @@
 const express = require('express')
 const db = require ('./db/connection');
-const apiRoutes = require('/routes/apiRoutes/apiRoutes');
+const apiRoutes = require('.index/routes/apiRoutes/index');
 
 app.listen(3001, () => {
     console.log('something here')
