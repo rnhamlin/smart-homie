@@ -24,6 +24,7 @@ title VARCHAR(30) NOT NULL,
 curricula DECIMAL,
 subject VARCHAR(30) NOT NULL,
 student VARCHAR(30) NOT NULL,
+complete BOOLEAN
 -- CONSTRAINT fk_subjects FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE SET NULL,
 -- CONSTRAINT fk_student FOREIGN KEY (student_id) REFERENCES student(id) ON DELETE SET NULL
 );
