@@ -1,14 +1,13 @@
-INSERT INTO subjects (name, standard)
+INSERT INTO subjects (name, curricula, standard)
 VALUES
-  ('Reading', 'Language Arts'),
-  ('Handwriting', 'Language Arts'),
-  ('Addition', 'Math'),
-  ('Subtraction', 'Math'),
-  ('Geometry', 'Math'),
-  ('Geography', 'History-Social Studies'),
-  ('Painting', 'Arts'),
-  ('Biology', 'Science'),
-  ('Typing', 'Computer Science');
+  ('Reading', null, 'Language Arts'),
+  ('Handwriting', null, 'Language Arts'),
+  ('Addition', null, 'Math'),
+  ('Geometry', null, 'Math'),
+  ('Geography', null, 'History-Social Studies'),
+  ('Painting', null, 'Arts'),
+  ('Biology', null, 'Science'),
+  ('Typing', null, 'Computer Science');
   
 INSERT INTO curricula (title, subject)
 VALUES
@@ -20,15 +19,17 @@ VALUES
   ('Keyboarding without Tears', 'Computer Science')
   ('Big Life Journal', 'Social Studies');
 
-INSERT INTO assignments (title, curricula, subject)
-VALUES
-  ('Worksheet 1', 'Right Start Math', 'Math'),
-  ('I have big feelings', 'Big Life Journal', 'Social Studies'),
-  ('Level 2', 'Keyboarding without Tears', 'Computer Science'),
-  ('Chemical and Physical Changes', 'Generation Genius', 'Science');
-
-INSERT INTO students (last_name, first_name, grade)
+INSERT INTO student (last_name, first_name, grade)
 VALUES
 ('Duck', 'Daffy', 1),
-('Fudd', 'Elmer', 4),
-('Bunny', 'Bugs', 2); 
+('Fudd', 'Elmer', 2),
+('Bunny', 'Bugs', 3),
+('Coyote', 'Wily', 4); 
+
+INSERT INTO assignments (title, curricula, subject, student)
+VALUES
+  ('Worksheet 1', 'Right Start Math', 'Math', 'Daffy Duck'),
+  ('I have big feelings', 'Big Life Journal', 'Social Studies', 'Elmer Fudd'),
+  ('Level 2', 'Keyboarding without Tears', 'Computer Science', 'Bugs Bunny'),
+  ('Chemical and Physical Changes', 'Generation Genius', 'Science', 'Wily Coyote');
+
