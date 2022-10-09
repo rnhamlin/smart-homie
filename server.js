@@ -1,18 +1,6 @@
 const express = require('express')
-const app = express()
-const path = require('path')
-const fs = require('fs')
-const { notStrictEqual } = require('assert')
-
-const PORT = process.env.PORT || 3001
-
-app.use(express.json())
-app.use(express.urlencoded({
-    extended: true
-}))
-app.use(express.static('assets'))
-
-//add get routes
+const db = require ('./db/connection');
+const apiRoutes = require('./routes/apiRoutes');
 
 //get route for home directory 
 //app.get('/', (req, res) => {
@@ -24,3 +12,30 @@ app.use(express.static('assets'))
 //add post routes
 
 app.listen(PORT, () => console.log(`listening on PORT: ${PORT}`))
+
+const PORT = process.env.PORT || 3001;
+const app = express();
+
+// Express middleware
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+// Use apiRoutes
+app.use('/api', apiRoutes);
+
+// Default response for any other request (Not Found)
+app.use((req, res) => {
+    res.json({
+        message: 'Working'
+    });
+  res.status(404).end();
+});
+
+// Start server after DB connection
+db.connect(err => {
+  if (err) throw err;
+  console.log('Database connected.');
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+});
