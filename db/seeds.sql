@@ -7,7 +7,7 @@ VALUES
   ('Geography', null, 'History-Social Studies'),
   ('Painting', null, 'Arts'),
   ('Biology', null, 'Science'),
-  ('Typing', null, 'Computer Science');
+  ('Typing', 'Keyboarding without Tears', 'Computer Science');
   
 INSERT INTO curricula (title, subject_id)
 VALUES
@@ -19,17 +19,16 @@ VALUES
   ('Keyboarding without Tears', 8)
   ('Big Life Journal', 5);
 
+INSERT INTO assignments (title, curricula, subject, grade, this-week, completed)
+VALUES
+  ('Worksheet 1', 'Right Start Math', 'Math', 1, true, false),
+  ('I have big feelings', 'Big Life Journal', 'Social Studies', 1, true, false),
+  ('Level 2', 'Keyboarding without Tears', 'Computer Science', 2, false, false),
+  ('Chemical and Physical Changes', 'Generation Genius', 'Science', 3, true, true);
+
 INSERT INTO students (last_name, first_name, grade)
 VALUES
 ('Duck', 'Daffy', 1),
 ('Fudd', 'Elmer', 2),
 ('Bunny', 'Bugs', 3),
 ('Coyote', 'Wily', 4); 
-
-INSERT INTO assignments (title, curricula, subject, student)
-VALUES
-  ('Worksheet 1', 'Right Start Math', 'Math', 'Daffy Duck'),
-  ('I have big feelings', 'Big Life Journal', 'Social Studies', 'Elmer Fudd'),
-  ('Level 2', 'Keyboarding without Tears', 'Computer Science', 'Bugs Bunny'),
-  ('Chemical and Physical Changes', 'Generation Genius', 'Science', 'Wily Coyote');
-

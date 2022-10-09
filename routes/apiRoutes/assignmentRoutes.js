@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../../db/connection');
 
-// Get all assignments
+// Get all assignments including data from fk cells
 router.get('/assignments', (req, res) => {
     const sql = 
     `SELECT assignments.*, subjects.name AS subject_name, students.name as student_name
@@ -28,7 +28,7 @@ router.get('/assignments', (req, res) => {
     });
   });
 
-// Get single assignment
+// Get single assignment including data from fk cells
 router.get('/assignments/:id', (req, res) => {
     const sql = `SELECT assignments.*, subjects.name AS student_name, students.name as student_name
     FROM assignments 
@@ -48,7 +48,7 @@ router.get('/assignments/:id', (req, res) => {
     });
   });
 
-  // Get all assignments by subject
+  // Get all assignments by subject including data from fk cells
 router.get('/assignments/:subject', (req, res) => {
   const sql = 
   `SELECT assignments.*, subjects.name 
@@ -91,7 +91,27 @@ router.delete('/assignment/:id', (req, res) => {
 
 // Update assignment to complete/incomplete
 router.update('/assignment/:id', (req, res) => {
-  const sql = `UPDATE assignments SET completed = 1 WHERE id=?`;
+  const sql = `UPDATE assignments SET completed = true WHERE id=?`;
+  db.querry(sql, req.params.id, (err, result) => {
+    if(err) {
+      res.status(400).json({ error: res.message });
+    } else if (!result.affectedRows) {
+      res.json({
+        message: 'Assignment not found'
+      });
+    } else {
+      res.json({
+        message: 'updated',
+        changes: result.affectedRows,
+        id: req.params.id
+      });
+    }
+  });
+});
+
+// Update assignment to be completed this week
+router.update('/assignment/:id', (req, res) => {
+  const sql = `UPDATE assignments SET this-week = true WHERE id=?`;
   db.querry(sql, req.params.id, (err, result) => {
     if(err) {
       res.status(400).json({ error: res.message });

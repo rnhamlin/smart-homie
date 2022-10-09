@@ -12,20 +12,22 @@ subject_id INTEGER,
 CONSTRAINT fk_subject FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE SET NULL
 );
 
+CREATE TABLE assignments (
+id INTEGER AUTO_INCREMENT PRIMARY KEY,
+title VARCHAR(30) NOT NULL,
+curricula_id DECIMAL,
+grade INTEGER,
+subject_id INTEGER,
+this-week BOOLEAN NOT NULL,
+completed BOOLEAN NOT NULL,
+CONSTRAINT fk_curricula FOREIGN KEY (curricula_id) REFERENCES curricula(id) ON DELETE SET NULL,
+CONSTRAINT fk_subject FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE SET NULL,
+);
+
 CREATE TABLE students (
 id INTEGER AUTO_INCREMENT PRIMARY KEY,
 last_name VARCHAR(30) NOT NULL,
 first_name VARCHAR(30) NOT NULL,
 grade VARCHAR(50) NOT NULL,
-);
-
-CREATE TABLE assignments (
-id INTEGER AUTO_INCREMENT PRIMARY KEY,
-title VARCHAR(30) NOT NULL,
-complete BOOLEAN,
-curricula DECIMAL,
-subject_id INTEGER,
-student_id INTEGER,
-CONSTRAINT fk_subject FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE SET NULL,
-CONSTRAINT fk_student FOREIGN KEY (student_id) REFERENCES students(id)
+assignments-completed INTEGER
 );
