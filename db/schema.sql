@@ -22,10 +22,10 @@ grade VARCHAR(50) NOT NULL,
 CREATE TABLE assignments (
 id INTEGER AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(30) NOT NULL,
+complete BOOLEAN,
 curricula DECIMAL,
-subject INTEGER,
-complete BOOLEAN
+subject_id INTEGER,
 student_id INTEGER,
-CONSTRAINT fk_student FOREIGN KEY (student_id) REFERENCES students(id)
 CONSTRAINT fk_subject FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE SET NULL,
+CONSTRAINT fk_student FOREIGN KEY (student_id) REFERENCES students(id)
 );

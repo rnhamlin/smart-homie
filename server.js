@@ -1,6 +1,6 @@
 const express = require('express')
 const db = require ('./db/connection');
-const apiRoutes = require('.index/routes/apiRoutes/index');
+const apiRoutes = require('./routes/apiRoutes');
 
 //get route for home directory 
 //app.get('/', (req, res) => {
