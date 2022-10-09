@@ -2,9 +2,16 @@ const express = require('express')
 const db = require ('./db/connection');
 const apiRoutes = require('.index/routes/apiRoutes/index');
 
-app.listen(3001, () => {
-    console.log('something here')
-})
+//get route for home directory 
+//app.get('/', (req, res) => {
+//res.sendFile(path.join(_dirname, 'insert directory name here to get inputted data'))
+//})
+
+// repeat above for multiple get routes
+
+//add post routes
+
+app.listen(PORT, () => console.log(`listening on PORT: ${PORT}`))
 
 const PORT = process.env.PORT || 3001;
 const app = express();
