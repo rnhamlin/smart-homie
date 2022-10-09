@@ -4,5 +4,5 @@ USE homies;
 
 DROP TABLE IF EXISTS subjects;
 DROP TABLE IF EXISTS curricula;
-DROP TABLE IF EXISTS student;
+DROP TABLE IF EXISTS students;
 DROP TABLE IF EXISTS assignments;

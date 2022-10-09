@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../../db/connection');
 
-// Get all voters alphabetized by last name
+// Get all students alphabetized by last name
 router.get('/students', (req, res) => {
   const sql = `SELECT * FROM students ORDER BY last_name`;
   db.query(sql, (err, rows) => {

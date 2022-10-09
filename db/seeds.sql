@@ -9,17 +9,17 @@ VALUES
   ('Biology', null, 'Science'),
   ('Typing', null, 'Computer Science');
   
-INSERT INTO curricula (title, subject)
+INSERT INTO curricula (title, subject_id)
 VALUES
-  ('Leap Into Reading', 'Reading'),
-  ('Right Start Math', 'Math'),
-  ('Generation Genius', 'Science'),
-  ('DK Biology', 'Science'), 
-  ('Life of Fred', 'Math'),
-  ('Keyboarding without Tears', 'Computer Science')
-  ('Big Life Journal', 'Social Studies');
+  ('Leap Into Reading', 1),
+  ('Right Start Math', 3),
+  ('Generation Genius', 7),
+  ('DK Biology', 7), 
+  ('Life of Fred', 3),
+  ('Keyboarding without Tears', 8)
+  ('Big Life Journal', 5);
 
-INSERT INTO student (last_name, first_name, grade)
+INSERT INTO students (last_name, first_name, grade)
 VALUES
 ('Duck', 'Daffy', 1),
 ('Fudd', 'Elmer', 2),

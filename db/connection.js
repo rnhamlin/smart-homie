@@ -7,10 +7,5 @@ const db = mysql.createConnection({
   database: 'homies'
 });
 
-//update assignment to complete
-// UPDATE assignments
-// SET completed = 1
-// WHERE id = ?; 
-
 module.exports = db;
 

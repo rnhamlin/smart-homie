@@ -8,10 +8,11 @@ standard VARCHAR(30)
 CREATE TABLE curricula (
 id INTEGER AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(30) NOT NULL,
-subject VARCHAR(30)
+subject_id INTEGER,
+CONSTRAINT fk_subject FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE SET NULL
 );
 
-CREATE TABLE student (
+CREATE TABLE students (
 id INTEGER AUTO_INCREMENT PRIMARY KEY,
 last_name VARCHAR(30) NOT NULL,
 first_name VARCHAR(30) NOT NULL,
@@ -22,9 +23,9 @@ CREATE TABLE assignments (
 id INTEGER AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(30) NOT NULL,
 curricula DECIMAL,
-subject VARCHAR(30) NOT NULL,
-student VARCHAR(30) NOT NULL,
+subject INTEGER,
 complete BOOLEAN
--- CONSTRAINT fk_subjects FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE SET NULL,
--- CONSTRAINT fk_student FOREIGN KEY (student_id) REFERENCES student(id) ON DELETE SET NULL
+student_id INTEGER,
+CONSTRAINT fk_student FOREIGN KEY (student_id) REFERENCES students(id)
+CONSTRAINT fk_subject FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE SET NULL,
 );
