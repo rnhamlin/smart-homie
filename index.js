@@ -6,8 +6,15 @@ var grade = document.querySelector("#grade")
 var standard = document.querySelector("#standard")
 
 
+//Capture input for assignments to fill in "You're Working On"
+
+//send assignment info to database
+
+//Add event listener to button for completed assignment
 
 
+
+//finish APIs for the CC
 //APIs for Curiosity Corner
 function randomWord() {
     
