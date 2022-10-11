@@ -5,8 +5,8 @@ const { Assignments, User } = require('../../models');
 //get all assignments
 router.get('/', (req, res) => {
     console.log('======');
-    Post.findAll({
-        attributes: ['id', 'content', 'created_at'],
+    Assignments.findAll({
+        attributes: ['id', 'title', 'curricula_id', 'grade', 'subject_id', 'thisWeek', 'completed', 'created_at'],
         include: [
             {
                 model: User,
@@ -14,20 +14,20 @@ router.get('/', (req, res) => {
             }
         ]
     })
-    .then(dbPostData => res.json(dbPostData))
+    .then(dbAssignmentsData => res.json(dbAssignmentsData))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
     });
 });
 
-//get one post
+//get one assignment
 router.get('/:id', (req, res) => {
-    Post.findOne({
+    Assignments.findOne({
         where: {
             id: req.params.id
         },
-        attributes: ['id', 'content', 'created_at'],
+        attributes: ['id', 'title', 'curricula_id', 'grade', 'subject_id', 'thisWeek', 'completed', 'created_at'],
         include: [
             {
                 model: User,
@@ -35,12 +35,12 @@ router.get('/:id', (req, res) => {
             }
         ]
     })
-    .then(dbPostData => {
-        if(!dbPostData) {
-            res.status(404).json({ message: 'No post found with this id' });
+    .then(dbAssignmentsData => {
+        if(!dbAssignmentsData) {
+            res.status(404).json({ message: 'No assignment found with this id' });
             return;
         }
-        res.json(dbPostData);
+        res.json(dbAssignmentsData);
     })
     .catch(err => {
         console.log(err);
@@ -48,17 +48,48 @@ router.get('/:id', (req, res) => {
     });
 });
 
-//create a post
+//create an assignment (how to capture this input eg ids from other table, booleans - modal form field in front end js, sends values to db how/where???)
 router.post('/', (req, res) => {
-    Post.create({
-        content: req.body.content,
+    Assignments.create({
+        title: req.body.title,
+        curricula_id: req.body.curricula_id,
+        grade: req.body.grade,
+        subject_id: req.body.subject_id,
+        thisWeek: req.body.thisWeek,
+        completed: req.body.completed,
         user_id: req.body.user_id
     })
-    .then(dbPostData => res.json(dbPostData))
+    .then(dbAssignmentsData => res.json(dbAssignmentsData))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
     });
+});
+
+//update assignment's completion status (will need front end js for this on logged-in user page, a modal with dropdown of assignments, select, check "complete"?, sequelize will record date of update?)
+router.put('/:id', (req, res) => {
+  Assignments.update(
+    {
+      completed: req.body.completed
+    },
+    {
+      where: {
+        id: req.params.id
+      }
+    }
+  )
+  .then.json(dbAssignmentsData);
+})
+.then(dbAssignmentsData => {
+  if (!dbAssignmentsData) {
+    res.status(404).json({ message: 'No assignments found with this id'});
+    return;
+  }
+  res.json(dbAssignmentsData);
+})
+.catch(err => {
+  console.log(err);
+  res.status(500).json(err);
 });
 
 module.exports = router;
