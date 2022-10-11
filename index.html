@@ -86,33 +86,62 @@
   <div class="tile is-ancestor">
     <div class="tile is-parent">
       <article class="tile is-child box">
-        <p class="title">You're Working on:</p>
+        <p class="title">Make a Plan:</p>
+        <p>
+        <form>
+          <label>What is your goal for today?</label>
+          <input type="text">
+          </br>
+          <label>What assignment are you working on?</label>
+          <input type="text">
+          </br>
+          <label>Subject</label>
+          <select id="subjects">
+            <option value="English-language-arts">English/Language Arts</option>
+            <option value="Math">Math</option>
+            <option value="Science">Science</option>
+            <option value="History-social-Science">History/Social Science</option>
+            <option value="Physical-Education">Physical Education</option>
+            <option value="Art">Art</option>
+            <option value="Music">Music</option>
+          </select>
+          </br>
+          <label>Grade Level</label>
+          <select id="grade">
+            <option value="K">K</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+          </br>
+          <label>What standard does this assignment meet?</label>
+          <input type="text">
+        </br>
+        <input type="submit">
+        </form>
+        </p>
+      </article>
+    </div>
+
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p class="title">You're Working On:</p>
         <p class="subtitle">
           get lists, row data from mysql db to list subjects, assignments
           list Subjects
           list assignments
 
         </p>
-      </article>
-
-    </div>
-    <div class="tile is-parent">
-      <article class="tile is-child box">
-        <p class="title">Make a plan:</p>
-        <p class="subtitle">
-          What is your goal for today?
-          <form></form>
-          </br>
-          Enter a new assignment:
-          </br>
-          What subject
-          </br>
-          What grade
-          </br>
-          Give it a name
-          </br>
-          Does it work toward a state standard? [if yes, choose from a list]
-        </p>
+        <button>Click Here when you Finish this Assignment</button>
       </article>
     </div>
 
