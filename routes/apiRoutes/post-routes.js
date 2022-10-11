@@ -1,8 +1,7 @@
-
 const router = require('express').Router();
-const { Assignments, User } = require('../../models');
+const { Post, User } = require('../../models');
 
-//get all assignments
+//get all posts
 router.get('/', (req, res) => {
     console.log('======');
     Post.findAll({

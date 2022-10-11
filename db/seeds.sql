@@ -19,7 +19,7 @@ VALUES
   ('Keyboarding without Tears', 8)
   ('Big Life Journal', 5);
 
-INSERT INTO assignments (title, curricula, subject, grade, this-week, completed)
+INSERT INTO assignments (title, curricula, subject, grade, thisWeek, completed)
 VALUES
   ('Worksheet 1', 'Right Start Math', 'Math', 1, true, false),
   ('I have big feelings', 'Big Life Journal', 'Social Studies', 1, true, false),

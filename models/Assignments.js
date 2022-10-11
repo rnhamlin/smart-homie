@@ -17,12 +17,25 @@ Assignments.init(
         type: DataTypes.STRING,
         allowNull: false
     },
-    post_url: {
+    curricula_id: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            isURL: true
-        }
+        allowNull: true
+    },
+    grade: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+    subject_id: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+    thisWeek: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true
+    },
+    completed: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
     },
     user_id: {
         type: DataTypes.INTEGER,

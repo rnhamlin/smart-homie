@@ -41,6 +41,6 @@ db.connect(err => {
   });
 });
 
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
