@@ -1,6 +1,7 @@
 const express = require('express')
 const db = require ('./db/connection');
 const apiRoutes = require('./routes/apiRoutes');
+const sequelize = require('./config/connection'); 
 
 //get route for home directory 
 //app.get('/', (req, res) => {
@@ -13,14 +14,14 @@ const apiRoutes = require('./routes/apiRoutes');
 
 app.listen(PORT, () => console.log(`listening on PORT: ${PORT}`))
 
-const PORT = process.env.PORT || 3001;
 const app = express();
+const PORT = process.env.PORT || 3001;
 
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Use apiRoutes
+// Use apiRoutes (should this be simply "routes"?)
 app.use('/api', apiRoutes);
 
 // Default response for any other request (Not Found)
@@ -38,4 +39,8 @@ db.connect(err => {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
+});
+
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
 });
