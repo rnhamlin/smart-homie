@@ -16,15 +16,15 @@ VALUES
   ('Generation Genius', 7),
   ('DK Biology', 7), 
   ('Life of Fred', 3),
-  ('Keyboarding without Tears', 8)
+  ('Keyboarding without Tears', 8),
   ('Big Life Journal', 5);
 
-INSERT INTO assignments (title, curricula, subject, grade, this-week, completed)
+INSERT INTO assignments (title, curricula_id, subject_id, grade, this_week, completed)
 VALUES
-  ('Worksheet 1', 'Right Start Math', 'Math', 1, true, false),
-  ('I have big feelings', 'Big Life Journal', 'Social Studies', 1, true, false),
-  ('Level 2', 'Keyboarding without Tears', 'Computer Science', 2, false, false),
-  ('Chemical and Physical Changes', 'Generation Genius', 'Science', 3, true, true);
+  ('Worksheet 1', 3, 2, 1, true, false),
+  ('I have big feelings', 2, 4, 1, true, false),
+  ('Level 2', 3, 6, 2, false, false),
+  ('Chemical and Physical Changes', 7, 3, 3, true, true);
 
 INSERT INTO students (last_name, first_name, grade)
 VALUES
