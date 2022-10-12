@@ -1,12 +1,12 @@
-
 const router = require('express').Router();
-const { Assignments, User } = require('../../models');
+const { Assignments, User, Post } = require('../../models');
 
 //get all assignments
 router.get('/', (req, res) => {
     console.log('======');
     Assignments.findAll({
         attributes: ['id', 'title', 'curricula_id', 'grade', 'subject_id', 'thisWeek', 'completed', 'created_at'],
+        order: [['created_at', 'DESC']],
         include: [
             {
                 model: User,
@@ -90,6 +90,26 @@ router.put('/:id', (req, res) => {
 .catch(err => {
   console.log(err);
   res.status(500).json(err);
+});
+
+//delete an assignment
+router.delete('/:id', (req, res) => {
+  Post.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(dbPostData => {
+    if (!dbPostData) {
+      res.status(404).json({ message: 'No post found with this id' });
+      return;
+    }
+    res.json(dbPostData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 module.exports = router;
