@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../../db/connection');
+const db = require('../../config/connection');
 
 // Get all students alphabetized by last name
 router.get('/students', (req, res) => {
