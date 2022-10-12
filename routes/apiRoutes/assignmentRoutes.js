@@ -78,19 +78,19 @@ router.put('/:id', (req, res) => {
       }
     }
   )
-  .then.json(dbAssignmentsData);
+  .then(dbAssignmentsData => {
+    if (!dbAssignmentsData) {
+      res.status(404).json({ message: 'No assignments found with this id'});
+      return;
+    }
+    res.json(dbAssignmentsData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });  //check order, no .then on put method
 })
-.then(dbAssignmentsData => {
-  if (!dbAssignmentsData) {
-    res.status(404).json({ message: 'No assignments found with this id'});
-    return;
-  }
-  res.json(dbAssignmentsData);
-})
-.catch(err => {
-  console.log(err);
-  res.status(500).json(err);
-});
+
 
 //delete an assignment
 router.delete('/:id', (req, res) => {

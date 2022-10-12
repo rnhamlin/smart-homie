@@ -3,7 +3,7 @@ const router = express.Router();
 
 const userRoutes = require('./user-routes.js');
 const postRoutes = require('./post-routes');
-const assignmentRoutes = require('./assignment-routes.js');
+const assignmentRoutes = require('./assignmentRoutes.js');
 const studentRoutes = require('./studentRoutes');
 
 router.use('/users', userRoutes);

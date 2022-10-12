@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-//create Assignmemts model
-class Assignments extends Model {}
+//create Students model
+class Students extends Model {}
 
-//create fields/columns for Assignments model (define schema)
-Assignments.init(
+//create fields/columns for Students model (define schema)
+Students.init(
     {
     id: {
         type: DataTypes.INTEGER,
@@ -13,29 +13,21 @@ Assignments.init(
         primaryKey: true,
         autoIncrement: true
     },
-    title: {
+    last_name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    curricula_id: {
+    first_name: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
     grade: {
         type: DataTypes.INTEGER,
         allowNull: true
     },
-    subject_id: {
-        type: DataTypes.INTEGER,
-        allowNull: true
-    },
-    thisWeek: {
+    assignments_completed: {
         type: DataTypes.BOOLEAN,
         allowNull: true
-    },
-    completed: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false
     },
     user_id: {
         type: DataTypes.INTEGER,
@@ -53,4 +45,4 @@ Assignments.init(
     }
 );
 
-module.exports = Assignments;
+module.exports = Students;

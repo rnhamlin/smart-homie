@@ -1,8 +1,7 @@
 const User = require('./User');
 const Post = require('./Post');
-const Assignments = rquire('./Assignments');
-const Student = require('./Student');
-
+const Assignments = require('./Assignments');
+const Students = require('./Students');
 
 User.hasMany(Post, {
     foreignKey: 'user_id'
@@ -16,4 +15,12 @@ Assignments.belongsTo(User, {
     foreignKey: 'user_id',
 });
 
-module.exports = { User, Post, Assignments, Student };
+Assignments.belongsTo(Students, {
+    foreignKey: 'assignments_completed',
+});
+
+Students.hasMany(Assignments, {
+    foreignKey: 'completed',
+});
+
+module.exports = { User, Post, Assignments, Students };
