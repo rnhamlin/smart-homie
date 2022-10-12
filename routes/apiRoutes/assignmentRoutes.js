@@ -89,44 +89,4 @@ router.delete('/assignment/:id', (req, res) => {
     });
   });
 
-// Update assignment to complete/incomplete
-router.update('/assignment/:id', (req, res) => {
-  const sql = `UPDATE assignments SET completed = true WHERE id=?`;
-  db.querry(sql, req.params.id, (err, result) => {
-    if(err) {
-      res.status(400).json({ error: res.message });
-    } else if (!result.affectedRows) {
-      res.json({
-        message: 'Assignment not found'
-      });
-    } else {
-      res.json({
-        message: 'updated',
-        changes: result.affectedRows,
-        id: req.params.id
-      });
-    }
-  });
-});
-
-// Update assignment to be completed this week
-router.update('/assignment/:id', (req, res) => {
-  const sql = `UPDATE assignments SET this-week = true WHERE id=?`;
-  db.querry(sql, req.params.id, (err, result) => {
-    if(err) {
-      res.status(400).json({ error: res.message });
-    } else if (!result.affectedRows) {
-      res.json({
-        message: 'Assignment not found'
-      });
-    } else {
-      res.json({
-        message: 'updated',
-        changes: result.affectedRows,
-        id: req.params.id
-      });
-    }
-  });
-});
-
 module.exports = router;
