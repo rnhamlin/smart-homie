@@ -1,10 +1,16 @@
 const bcrypt = require('bcrypt');
 const { DataTypes } = require('sequelize');
-const { UPSERT } = require('sequelize/types/query-types');
+const { USER } = require('sequelize/types/query-types');
 
 bcrypt.hash(myPlaintestPassword, saltRounds).then(function(hash) {
     
 });
+
+class User extends Model {
+    checkPassword(loginPw) {
+        return bcrypt.compareSync(loginPw, this.password);
+    }
+}
 
 USER.init(
     {
@@ -57,3 +63,5 @@ USER.init(
        modelName: 'user' 
     }
 );
+
+modelexports = User; 
