@@ -12,7 +12,6 @@ const sequelize = require('./config/connection');
 
 //add post routes
 
-const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Express middleware

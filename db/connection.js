@@ -13,7 +13,7 @@ const sequelize = new Sequelize(process.env_DB_NAME, process.env.DB_USER, proces
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'Outvilejelly123',
+  password: '',
   database: 'homies'
 });
 
