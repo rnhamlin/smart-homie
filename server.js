@@ -12,8 +12,6 @@ const sequelize = require('./config/connection');
 
 //add post routes
 
-app.listen(PORT, () => console.log(`listening on PORT: ${PORT}`))
-
 const app = express();
 const PORT = process.env.PORT || 3001;
 

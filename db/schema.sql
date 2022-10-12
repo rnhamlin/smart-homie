@@ -21,7 +21,7 @@ subject_id INTEGER,
 thisWeek BOOLEAN NOT NULL,
 completed BOOLEAN NOT NULL,
 CONSTRAINT fk_curricula FOREIGN KEY (curricula_id) REFERENCES curricula(id) ON DELETE SET NULL,
-CONSTRAINT fk_subject FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE SET NULL,
+CONSTRAINT fk_subject FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE SET NULL
 );
 
 CREATE TABLE students (
