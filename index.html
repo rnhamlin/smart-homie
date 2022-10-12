@@ -17,7 +17,7 @@
 <body>
 
   <!--Navigation Section-->
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <nav class="navbar has-background-info-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://bulma.io">
       </a>
@@ -31,7 +31,7 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item">
+        <a class="navbar-item has-text-warning">
           Home
         </a>
 
@@ -50,7 +50,7 @@
             <a class="button is-primary">
               <strong>Sign up</strong>
             </a>
-            <a href="/views/login.handlebars" class="button is-light">
+            <a href="/views/login.handlebars" class="button is-warning">
               Log in
             </a>
           </div>
@@ -60,21 +60,25 @@
   </nav>
 
   <!--Hero Section-->
-  <section class="hero is-info">
-    <div class="hero-body">
+  <section class="hero">
+    <div class="hero-body has-background-info-dark">
       <div class="">
-        <p class="title">
+        <h1 class="title is-1 has-text-primary">
           Smart Homies
-        </p>
+        </h1>
 
         <!--Homie Hangout Section-->
-        <div class="container is-fluid" id="hangout">
+        <div class="notification is-fluid has-background-info-dark" id="hangout">
           <div class="notification">
-            <p class="title">Homie Hangout</p>
+            <h2 class="subtitle is-2 has-text-warning-dark has-text-bold">Homie Hangout</h2>
             <p> users can post comments in a discussion/chat space here
               can we make a category for reviews? so people could share raves/roasts about curricula or books or lessons
               etc?
             </p>
+          </br>
+            <h3 class="subtitle is-4 has-text-warning-dark has-text-bold is-italic">Check Out What Your Homies Are Doing! </h3>
+
+          <p>list of 3 recent items completed by other users ?? don’t really know how to do this…</p>
           </div>
         </div>
 
@@ -82,11 +86,13 @@
     </div>
   </section>
 
+<!--add a border/other graphic here? something to break up the page a little more?-->
+
   <!--Box Section-->
-  <div class="tile is-ancestor">
+  <div class="tile is-ancestor has-background-info-dark pl-5">
     <div class="tile is-parent">
       <article class="tile is-child box">
-        <p class="title">Make a Plan:</p>
+        <h2 class="subtitle is-3 has-text-warning-dark">Make a Plan:</h2>
         <p>
         <form id="make-a-plan-form">
           <label>What is your goal for today?</label>
@@ -134,7 +140,7 @@
 
     <div class="tile is-parent">
       <article class="tile is-child box">
-        <p class="title">You're Working On:</p>
+        <h2 class="subtitle is-3 has-text-warning-dark">You're Working On:</h2>
         <p class="subtitle">
           get lists, row data from mysql db to list subjects, assignments
           list Subjects
@@ -145,25 +151,21 @@
       </article>
     </div>
 
-    <div class="tile is-parent">
+    <div class="tile is-parent pr-5">
       <article class="tile is-child box">
-        <p class="title">Look What You've Accomplished!</p>
+        <h2 class="subtitle is-3 has-text-warning-dark">Look What You've Accomplished!</h2>
         <div class="content">
           <p>db will send list of 3 most recent assignments completed or standards achieved etc</p>
 
           <br>
-
-          <p class="title">Check Out What Your Homies Are Doing! </p>
-
-          <p>list of 3 recent items completed by other users ?? don’t really know how to do this…</p>
         </div>
       </article>
     </div>
   </div>
 
   <!--Footer Section-->
-  <footer class="footer">
-    <div class="content has-text-centered">
+  <footer class="footer has-text-centered has-text-primary has-background-info-dark">
+    <div class="content">
       <p>
         Made with ❤️ by Group 1.
       </p>

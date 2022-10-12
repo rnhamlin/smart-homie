@@ -1,13 +1,15 @@
 body {
-  background-color: #3e6b7a;
   color: #414141;
 }
 
 #hangout {
-  background-color: #d1eeee;
   color: #414141;
+  background-color: #d1eeee;
 }
 
 .notification {
   color: #414141;
+}
+h1 {
+  color: #a1a468;
 }
