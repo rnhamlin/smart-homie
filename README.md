@@ -2,14 +2,28 @@
 
 ## Description
 
-An app for homeschooling parents to plan their child's education according to state standards, and also to connect and collaborate with other homeschooling parents.
+Are you home schooling the little(s)? Having trouble keeping up with tasks or would like to organize them better? Smart Homie is where you need to be. This app will help keep you and your little smart homie(s) on track.
 
-## Technologies Used
+## Built with...
+
+- HTML
+- Bulma
+- JavaScript
+- API
+- Express
+- Heroku
+- SQL
 
 ## Screenshot
 
+placeholder
+
 ## Link
+
+placeholder
 
 ## Contributers
 
-Abigail Queen, Alexus Christensen, Graciela Mejia, Lacey Aguigam, Renee Hamlin, Catherine Cunningham
+Made with ❤️ by:
+
+Abigail Queen, Alexus Christensen, Graciela Mejia, Lacey Aguigam, Renee Hamlin and Catherine Cunningham
