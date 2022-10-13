@@ -1,0 +1,21 @@
+<!--Homie Hangout Section-->
+        <div class="container is-fluid">
+          <div class="notification is-primary">
+            <p class="title">Homie Hangout</p>
+            <p> users can post comments in a discussion/chat space here
+              can we make a category for reviews? so people could share raves/roasts about curricula or books or lessons
+              etc?
+            </p>
+            <ol class ="post-list">
+                {{#each posts as |post|}}
+                <li>
+                    <article class="post">
+                        <div class="post-content">
+                            <span>({{post.content}})</span>
+                        </div>
+                    </article>
+                </li>
+                {{/each}}
+            </ol>
+          </div>
+        </div>
