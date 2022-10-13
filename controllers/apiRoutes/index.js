@@ -5,10 +5,12 @@ const userRoutes = require('./user-routes.js');
 const postRoutes = require('./post-routes');
 const assignmentRoutes = require('./assignmentRoutes.js');
 const studentRoutes = require('./studentRoutes');
+const homeRoutes = require('./home-routes.js')
 
 router.use('/users', userRoutes);
 router.use('/posts', postRoutes);
 router.use('/assignments', assignmentRoutes); 
 router.use('/students', studentRoutes);
+router.use('/', homeRoutes);
 
 module.exports = router;
