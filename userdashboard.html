@@ -1,84 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Homies</title>
 
-  <title>Smart Homies</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="" href="./assets/style.css" />
+  </head>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="" href="./assets/style.css">
+  <body>
+    <!--Navigation Section-->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io"> </a>
 
-
-</head>
-
-<body>
-
-  <!--Navigation Section-->
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
-      </a>
-
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item">
-          <a class="navbar-item" href="./homepage.html">Home</a>    
-        </a>
-
-        <a class="navbar-item">
-          <a class="navbar-item" href="#">Discussion Board</a>
-        </a>
-
-        <a class="navbar-item">
-          Resources
-        </a>
-
-        <a class="navbar-item">
-          Calendar
-        </a>
-
-        <a class="navbar-item">
-          Grades
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </a>
       </div>
 
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a href="/views/login.handlebars" class="button is-light">
-              Log in
-            </a>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item">
+            <a class="navbar-item" href="./index.html">Home</a>
+          </a>
+
+          <a class="navbar-item">
+            <a class="navbar-item" href="#">Discussion Board</a>
+          </a>
+
+          <a class="navbar-item"> Resources </a>
+
+          <a class="navbar-item"> Calendar </a>
+
+          <a class="navbar-item"> Grades </a>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a href="/views/logout.handlebars" class="button is-light">
+                Log out
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
   <!--Hero Section-->
   <section class="hero is-success is-halfheight">
     <div class="hero-body">
       <div class="">
-        <h1 class="title">
+        <p class="title">
           Smart Homies
-        </h1>
+        </p>
 
         <!--Homie Hangout Section-->
         <div class="container is-fluid">
           <div class="notification is-primary">
-            <h2 class="title">Homie Hangout</h2>
+            <p class="title">Homie Hangout</p>
             <p> users can post comments in a discussion/chat space here
               can we make a category for reviews? so people could share raves/roasts about curricula or books or lessons
               etc?
@@ -94,7 +89,7 @@
   <div class="tile is-ancestor">
     <div class="tile is-parent">
       <article class="tile is-child box">
-        <h2 class="title">Make a Plan:</h2>
+        <p class="title">Make a Plan:</p>
         <p>
         <form id="make-a-plan-form">
           <label>What is your goal for today?</label>
@@ -142,7 +137,7 @@
 
     <div class="tile is-parent">
       <article class="tile is-child box">
-        <h2 class="title">You're Working On:</h2>
+        <p class="title">You're Working On:</p>
         <p class="subtitle">
           get lists, row data from mysql db to list subjects, assignments
           list Subjects
@@ -155,32 +150,27 @@
 
     <div class="tile is-parent">
       <article class="tile is-child box">
-        <h2 class="title">Look What You've Accomplished!</h2>
+        <p class="title">Look What You've Accomplished!</p>
         <div class="content">
           <p>db will send list of 3 most recent assignments completed or standards achieved etc</p>
 
           <br>
 
-          <h3 class="title">Homie Accomplishments! </h3>
-          <p>Check out what your homies are doing!</p>
-        </br>
+          <p class="title">Check Out What Your Homies Are Doing! </p>
+
           <p>list of 3 recent items completed by other users ?? don’t really know how to do this…</p>
         </div>
       </article>
     </div>
   </div>
 
-  <!--Footer Section-->
-  <footer class="footer">
-    <div class="content has-text-centered">
-      <p>
-        Made with ❤️ by Group 1.
-      </p>
-    </div>
-  </footer>
+    <!--Footer Section-->
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>Made with ❤️ by Group 1.</p>
+      </div>
+    </footer>
 
-  <script src="./index.js"> </script>
-
-</body>
-
+    <script src="./index.js"></script>
+  </body>
 </html>
