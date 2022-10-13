@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { USER } = require("sequelize/types/query-types")
+const User = require('../../models/user');
 
 router.get('/', (req, res) => {
     User.findAll({
@@ -106,4 +106,4 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-module.export = router;
+module.exports = router;
