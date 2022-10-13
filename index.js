@@ -40,12 +40,3 @@ wordBtn.addEventListener('click', function () {
 
 })
 
-
-
-marsBtn.addEventListener('click', function () {
-    fetch('https://api.nasa.gov/insight_weather/?api_key=faCfjgrFrO81fgt3XAlsJyNqFWKWll17NRAUNcDA&feedtype=json&ver=1.0')
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data)
-        })
-})
