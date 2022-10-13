@@ -1,8 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-router.use(require('./assignmentRoutes'));
-router.use(require('./studentRoutes'))
-//add other routes
+const userRoutes = require('./user-routes.js');
+const postRoutes = require('./post-routes');
+const assignmentRoutes = require('./assignmentRoutes.js');
+const studentRoutes = require('./studentRoutes');
+
+router.use('/users', userRoutes);
+router.use('/posts', postRoutes);
+router.use('/assignments', assignmentRoutes); 
+router.use('/students', studentRoutes);
 
 module.exports = router;
