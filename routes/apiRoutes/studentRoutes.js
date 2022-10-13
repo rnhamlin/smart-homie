@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../../db/connection');
+const db = require('../../config/connection');
 
 // Get all students alphabetized by last name
 router.get('/students', (req, res) => {
@@ -102,26 +102,6 @@ router.delete('/student/:id', (req, res) => {
         id: req.params.id
       });
     }
-  });
-});
-
-// Get tally of assignments completed  .... doesn't work yet
-router.get('/votes', (req, res) => {
-  const sql = 
-  `SELECT students.*, assignments-completed.name AS assignments-completed_name, 
-  COUNT(student_id) AS count
-  FROM students
-  LEFT JOIN students ON assignments-completed.student_id = students.id
-  LEFT JOIN assignments ON students.assignment-completed_id = assignments.id`;
-  db.query(sql, (err, rows) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-      return;
-    }
-    res.json({
-      message: 'success',
-      data: rows
-    });
   });
 });
 
