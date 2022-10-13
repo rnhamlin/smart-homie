@@ -3,6 +3,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const db = require("./db/connection");
 const apiRoutes = require("./routes/apiRoutes");
+const htmlRoutes = require("./routes/htmlRoutes");
 
 //get route for home directory
 //app.get('/', (req, res) => {
@@ -14,11 +15,12 @@ const apiRoutes = require("./routes/apiRoutes");
 //add post routes
 
 // Express middleware
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Use apiRoutes
 app.use("/api", apiRoutes);
+app.use("/", htmlRoutes);
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {
