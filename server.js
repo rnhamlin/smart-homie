@@ -5,20 +5,15 @@ const db = require("./db/connection");
 const apiRoutes = require("./routes/apiRoutes");
 const htmlRoutes = require("./routes/htmlRoutes");
 
-//get route for home directory
-//app.get('/', (req, res) => {
-//res.sendFile(path.join(_dirname, 'insert directory name here to get inputted data'))
-//})
-
-// repeat above for multiple get routes
-
-//add post routes
-
-// Express middleware
+//parse incoming string or array data
 app.use(express.urlencoded({ extended: true }));
+//parse incoming JSON data
 app.use(express.json());
 
-// Use apiRoutes
+//middleware
+// app.use(express.static(""));
+
+//api routes
 app.use("/api", apiRoutes);
 app.use("/", htmlRoutes);
 
