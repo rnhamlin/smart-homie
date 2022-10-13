@@ -7,6 +7,27 @@ const sequelize = require('./config/connection');
 //res.sendFile(path.join(_dirname, 'insert directory name here to get inputted data'))
 //})
 
+//connects session to the sequelize database 
+const session = require('express-session');
+
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
+
+app.use(session(sess));
+
+// repeat above for multiple get routes
+
+//add post routes
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
