@@ -7,11 +7,11 @@ Are you home schooling the little(s)? Having trouble keeping up with tasks or wo
 ## Built with...
 
 - HTML
+- CSS
 - Bulma
 - JavaScript
-- API
 - Express
-- Heroku
+- Heroku (deployement)
 - SQL
 
 ## Screenshot
@@ -20,7 +20,7 @@ placeholder
 
 ## Link
 
-placeholder
+https://smart-homie.herokuapp.com/
 
 ## Contributers
 
