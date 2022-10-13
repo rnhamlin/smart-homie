@@ -1,27 +1,28 @@
-const express = require("express");
+const express = require('express')
+const apiRoutes = require('./routes/apiRoutes');
+const sequelize = require('./config/connection');
+
+
+//get route for home directory 
+//app.get('/', (req, res) => {
+//res.sendFile(path.join(_dirname, 'insert directory name here to get inputted data'))
+//})
+
 const PORT = process.env.PORT || 3001;
 const app = express();
-const db = require("./db/connection");
-const apiRoutes = require("./routes/apiRoutes");
-const htmlRoutes = require("./routes/htmlRoutes");
 
-//parse incoming string or array data
-app.use(express.urlencoded({ extended: true }));
-//parse incoming JSON data
+// Express middleware
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-//middleware
-// app.use(express.static(""));
-
-//api routes
-app.use("/api", apiRoutes);
-app.use("/", htmlRoutes);
+// Use apiRoutes (should this be simply "routes"?)
+app.use('/api', apiRoutes);
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {
-  res.json({
-    message: "Working",
-  });
+    res.json({
+        message: 'Working'
+    });
   res.status(404).end();
 });
 
@@ -35,5 +36,5 @@ app.use((req, res) => {
 // });
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log("Now listening"));
+  app.listen(PORT, () => console.log('Now listening'));
 });
