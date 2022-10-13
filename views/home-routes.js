@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const sequelize = require('../config/connection');
 const { User, Post, Assignments } = require('../models'); 
-const router = require("../routes/apiRoutes");
+const router = require("../controllers/apiRoutes");
 
 Router.get('/login', (req, res) => {
     res.render('login');
