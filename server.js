@@ -1,43 +1,21 @@
-const express = require('express')
-const apiRoutes = require('./routes/apiRoutes');
-const sequelize = require('./config/connection');
-
-//get route for home directory
-//app.get('/', (req, res) => {
-//res.sendFile(path.join(_dirname, 'insert directory name here to get inputted data'))
-//})
-
-//connects session to the sequelize database 
-const session = require('express-session');
-
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
-const sess = {
-  secret: 'Super secret secret',
-  cookie: {},
-  resave: false,
-  saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize
-  })
-};
-
-app.use(session(sess));
-
-// repeat above for multiple get routes
-
-//add post routes
-
+const express = require("express");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const db = require("./db/connection");
+const apiRoutes = require("./routes/apiRoutes");
+const htmlRoutes = require("./routes/htmlRoutes");
 
-// Express middleware
-app.use(express.urlencoded({ extended: false }));
+//parse incoming string or array data
+app.use(express.urlencoded({ extended: true }));
+//parse incoming JSON data
 app.use(express.json());
 
-// Use apiRoutes (should this be simply "routes"?)
-app.use('/api', apiRoutes);
+//middleware
+// app.use(express.static(""));
 
+//api routes
+app.use("/api", apiRoutes);
+app.use("/", htmlRoutes);
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {
@@ -57,5 +35,5 @@ app.use((req, res) => {
 // });
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => console.log("Now listening"));
 });
