@@ -7,11 +7,15 @@ router.get("/", (req, res) => {
 });
 
 router.get("/studentRoutes", (req, res) => {
-  res.sendFile(path.join(__dirname, ""));
+  res.sendFile(path.join(__dirname, "../userdashboard.html"));
 });
 
-router.get((req, res) => {
-  res.status(404).end();
+router.get("/assignmentRoutes", (req, res) => {
+  res.sendFile(path.join(__dirname, "../userdashboard.html"));
+});
+
+router.get("/user-routes", (req, res) => {
+  res.sendFile(path.join(__dirname, "../userdashboard.html"));
 });
 
 module.exports = router;
