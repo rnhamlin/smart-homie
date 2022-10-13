@@ -20,7 +20,9 @@
   "homepage": "https://github.com/rnhamlin/smart-homie#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "connect-session-sequelize": "^7.1.5",
     "express": "^4.18.1",
+    "express-session": "^1.17.3",
     "mysql2": "^2.3.3"
   }
 }
