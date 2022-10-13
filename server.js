@@ -2,7 +2,6 @@ const express = require('express')
 const apiRoutes = require('./routes/apiRoutes');
 const sequelize = require('./config/connection');
 
-
 //get route for home directory 
 //app.get('/', (req, res) => {
 //res.sendFile(path.join(_dirname, 'insert directory name here to get inputted data'))
