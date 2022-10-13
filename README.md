@@ -7,6 +7,7 @@ Are you home schooling the little(s)? Having trouble keeping up with tasks or wo
 ## Built with...
 
 - HTML
+- CSS
 - Bulma
 - JavaScript
 - API
