@@ -4,61 +4,58 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Smart Homies</title>
-
+    <title>Smart Homie</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
-    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="js/server.js"></script>
   </head>
 
   <body>
-    <!--Navigation Section-->
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io"></a>
-        <a
-          role="button"
-          class="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasicExample"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item">
-            <a class="navbar-item" href="./index.html">Home</a>
+    <header>
+      <!--Navigation Section-->
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://bulma.io"></a>
+          <a
+            role="button"
+            class="navbar-burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
           </a>
-
-          <a class="navbar-item" href="#"> Discussion Board </a>
-
-          <a class="navbar-item" href="#"> Resources </a>
-
-          <a class="navbar-item" href="#"> Calendar </a>
-
-          <a class="navbar-item" href="#"> Grades </a>
         </div>
 
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a href="./views/login.html" class="button is-primary">
-                <strong>Sign up</strong>
-              </a>
-              <a href="./views/login.html" class="button is-light"> Log in </a>
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="index.html">Home</a>
+            <a class="navbar-item" href="discussion-board.html"
+              >Discussion Board</a
+            >
+            <a class="navbar-item" href="resources.html">Resources</a>
+            <a class="navbar-item" href="calendar.html">Calendar</a>
+            <a class="navbar-item" href="grades.html">Grades</a>
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a href="./login.html" class="button is-primary">
+                  <strong>Sign up</strong>
+                </a>
+                <a href="./login.html" class="button is-light"> Log in</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
 
     <!--Hero Section-->
     <section class="hero is-success is-halfheight">
@@ -81,7 +78,6 @@
       <div class="tile is-parent">
         <article class="tile is-child box">
           <h3 class="title is-3">Come Hang With Us!</h3>
-
           <p>
             Are you a homeschooling parent who dreams of spending less time
             planning and tracking assignments, and checking your learner's
@@ -95,7 +91,6 @@
       <div class="tile is-parent">
         <article class="tile is-child box">
           <h3 class="title is-3">Curiosity Corner</h3>
-
           <a
             href="https://www.montereybayaquarium.org/animals/live-cams"
             target="_blank"
@@ -105,26 +100,23 @@
           <p>
             <button id="random-word-button">Click for a New Word</button>
           </p>
-          <p></p>
         </article>
       </div>
       <div class="tile is-parent">
         <article class="tile is-child box">
           <h3 class="title is-3">Other Helpful Places</h3>
           <div class="content">
-            <p>
-              <a href="https://www.cde.ca.gov/be/st/ss/">CA State Standards</a>
-            </p>
-            <p>
-              <a href="https://www.californiahomeschool.net/"
-                >California Homeschool Resource</a
-              >
-            </p>
-            <p>
-              <a href="https://www.cde.ca.gov/ds/si/cs/ap1/imagemap.aspx"
-                >California Charter Schools List</a
-              >
-            </p>
+            <a href="https://www.cde.ca.gov/be/st/ss/">CA State Standards</a>
+            <br />
+            <br />
+            <a href="https://www.californiahomeschool.net/"
+              >California Homeschool Resource</a
+            >
+            <br />
+            <br />
+            <a href="https://www.cde.ca.gov/ds/si/cs/ap1/imagemap.aspx"
+              >California Charter Schools List</a
+            >
           </div>
         </article>
       </div>
