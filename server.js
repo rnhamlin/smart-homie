@@ -1,9 +1,8 @@
-const express = require('express')
-const apiRoutes = require('./routes/apiRoutes');
-const sequelize = require('./config/connection');
+const express = require("express");
+const apiRoutes = require("./routes/apiRoutes");
+const sequelize = require("./config/connection");
 
-
-//get route for home directory 
+//get route for home directory
 //app.get('/', (req, res) => {
 //res.sendFile(path.join(_dirname, 'insert directory name here to get inputted data'))
 //})
@@ -16,13 +15,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Use apiRoutes (should this be simply "routes"?)
-app.use('/api', apiRoutes);
+app.use("/api", apiRoutes);
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {
-    res.json({
-        message: 'Working'
-    });
+  res.json({
+    message: "Working",
+  });
   res.status(404).end();
 });
 
@@ -36,5 +35,5 @@ app.use((req, res) => {
 // });
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => console.log("Now listening"));
 });
