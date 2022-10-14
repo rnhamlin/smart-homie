@@ -1,4 +1,4 @@
-const user = require("./user").default;
+const user = require("./user");
 const Post = require("./Post");
 const Assignments = require("./Assignments");
 const Students = require("./Students");
