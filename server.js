@@ -1,53 +1,66 @@
-const express = require('express')
-const apiRoutes = require('./routes/apiRoutes');
-const sequelize = require('./config/connection');
+const express = require("express");
+const bodyParser = require("body-parser");
+const exphbs = require("express-handlebars");
 
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const PORT = process.env.PORT || 3001;
+const app = express();
+
+const apiRoutes = require("./routes/apiRoutes");
+const sequelize = require("./config/connection");
+
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+
+//for handlebars
+app.use(express.static(__dirname + "/public"));
+//for body-parser, just in case
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+//handlebars settings
+app.set("view engine", "hbs");
+app.engine(
+  "hbs",
+  exphbs({
+    extname: "hbs",
+    defaultLayout: "index",
+    layouts: __dirname + "/views/layouts",
+    partialsDir: __dirname + "/views/partials",
+  })
+);
 
 const sess = {
-  secret: 'Super secret secret',
+  secret: "Super secret secret",
   cookie: {},
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
-    db: sequelize
-  })
+    db: sequelize,
+  }),
 };
 
 app.use(session(sess));
-
-//get route for home directory 
-//app.get('/', (req, res) => {
-//res.sendFile(path.join(_dirname, 'insert directory name here to get inputted data'))
-//})
-
-const PORT = process.env.PORT || 3001;
-const app = express();
 
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Use apiRoutes (should this be simply "routes"?)
-app.use('/api', apiRoutes);
+app.use("/api", apiRoutes);
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {
-    res.json({
-        message: 'Working'
-    });
+  res.json({
+    message: "Working",
+  });
   res.status(404).end();
 });
 
-// Start server after DB connection
-// db.connect(err => {
-//   if (err) throw err;
-//   console.log('Database connected.');
-//   app.listen(PORT, () => {
-//     console.log(`Server running on port ${PORT}`);
-//   });
-// });
-
+//turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => console.log(`Listening to server ${PORT}`));
+});
+
+//landing page
+app.get("/", (req, res) => {
+  res.render("main");
 });
