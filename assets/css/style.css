@@ -3,6 +3,7 @@
   --secondary-color: ;
   --tertiary-color: ;
 
+}
 
 body {
   background-color: #3e6b7a;
@@ -17,5 +18,4 @@ body {
 .notification {
   color: #414141;
 }
-
 

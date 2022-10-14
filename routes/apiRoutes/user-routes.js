@@ -122,3 +122,7 @@ router.delete('/:id', (req, res) => {
 });
 
 module.exports = router;
+
+router.post('/logout', (req, res) => {
+
+});
