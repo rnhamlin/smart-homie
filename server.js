@@ -5,10 +5,10 @@ const exphbs = require("express-handlebars");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-const apiRoutes = require("./routes/apiRoutes");
-const sequelize = require("./config/connection");
+// const apiRoutes = require("./routes/apiRoutes");
+// const sequelize = require("./config/connection");
 
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
+// const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 //for handlebars
 app.use(express.static(__dirname + "/public"));
@@ -19,8 +19,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //handlebars settings
 app.set("view engine", "hbs");
 app.engine(
-  "hbs",
-  exphbs({
+  "handlebars",
+  exphbs.engine({
     extname: "hbs",
     defaultLayout: "index",
     layouts: __dirname + "/views/layouts",
@@ -28,24 +28,24 @@ app.engine(
   })
 );
 
-const sess = {
-  secret: "Super secret secret",
-  cookie: {},
-  resave: false,
-  saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize,
-  }),
-};
+// const sess = {
+//   secret: "Super secret secret",
+//   cookie: {},
+//   resave: false,
+//   saveUninitialized: true,
+//   store: new SequelizeStore({
+//     db: sequelize,
+//   }),
+// };
 
-app.use(session(sess));
+// app.use(session(sess));
 
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Use apiRoutes (should this be simply "routes"?)
-app.use("/api", apiRoutes);
+// app.use("/api", apiRoutes);
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {
@@ -56,8 +56,12 @@ app.use((req, res) => {
 });
 
 //turn on connection to db and server
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`Listening to server ${PORT}`));
+// sequelize.sync({ force: false }).then(() => {
+//   app.listen(PORT, () => console.log(`Listening to server ${PORT}`));
+// });
+
+app.listen(PORT, () => {
+  console.log(`API server now on ${PORT}!`);
 });
 
 //landing page
