@@ -1,67 +1,70 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const exphbs = require("express-handlebars");
+const path = require('path');
+const express = require('express');
+const apiRoutes = require('./routes/apiRoutes');
+const sequelize = require('./config/connection');
+const session = require('express-session');
+const exphbs = require('express-handlebars');
+
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-// const apiRoutes = require("./routes/apiRoutes");
-// const sequelize = require("./config/connection");
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-// const SequelizeStore = require("connect-session-sequelize")(session.Store);
-
-//for handlebars
-app.use(express.static(__dirname + "/public"));
-//for body-parser, just in case
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-//handlebars settings
-app.set("view engine", "hbs");
-app.engine(
-  "handlebars",
-  exphbs.engine({
-    extname: "hbs",
-    defaultLayout: "index",
-    layouts: __dirname + "/views/layouts",
-    partialsDir: __dirname + "/views/partials",
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
   })
-);
+};
 
-// const sess = {
-//   secret: "Super secret secret",
-//   cookie: {},
-//   resave: false,
-//   saveUninitialized: true,
-//   store: new SequelizeStore({
-//     db: sequelize,
-//   }),
-// };
+app.use(session(sess));
 
-// app.use(session(sess));
+const helpers = require('./utils/helpers');
+const hbs = exphbs.create({ helpers });
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public'))); 
 
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Use apiRoutes (should this be simply "routes"?)
-// app.use("/api", apiRoutes);
+// Use apiRoutes 
+app.use('/api', apiRoutes);
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {
-  res.json({
-    message: "Working",
-  });
+    res.json({
+        message: 'Working'
+    });
   res.status(404).end();
 });
 
-//turn on connection to db and server
-// sequelize.sync({ force: false }).then(() => {
-//   app.listen(PORT, () => console.log(`Listening to server ${PORT}`));
+// Start server after DB connection
+// db.connect(err => {
+//   if (err) throw err;
+//   console.log('Database connected.');
+//   app.listen(PORT, () => {
+//     console.log(`Server running on port ${PORT}`);
+//   });
 // });
 
-app.listen(PORT, () => {
-  console.log(`API server now on ${PORT}!`);
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
+});
+
+sequelize.authenticate().then(()=> {
+  console.log('Connection to db successful');
+}).catch((error)=> {
+  console.error('Unable to connect to db: ', error);
 });
 
 //landing page
