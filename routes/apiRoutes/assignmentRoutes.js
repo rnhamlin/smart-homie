@@ -1,13 +1,12 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection'); 
-const { Assignments, User, Post } = require('../../models');
+const { Assignments, Students, Subjects, Curricula, User, Post } = require('../../models');
 
 //get all assignments
 router.get('/assignments', (req, res) => {
-    console.log('======');
     Assignments.findAll({
         attributes: ['id', 'title', 'curricula_id', 'grade', 'subject_id', 'thisWeek', 'completed', 'created_at'
-        [sequelize.literal('(SELECT COUNT(*) FROM assignments)'), 'user-id']],
+        [sequelize.literal('(SELECT COUNT(*) FROM assignments)'), 'assignments']],
         order: [['created_at', 'DESC']],
         include: [
             {
@@ -15,19 +14,23 @@ router.get('/assignments', (req, res) => {
                 attributes: ['username']
             },
             {
-              model: curricula,
+              model: Curricula,
               attributes: ['curricula_id']
             },
             {
-              model: subjects,
+              model: Subjects,
               attributes: ['subject_id']
+            },
+            {
+              model: Students,
+              attributes: ['student_id']
             }
         ]
     })
     .then(dbAssignmentsData => {
       const assignments = dbAssignmentsData.map(assignments => assignments.get({ plain: true }));
       
-      res.render('userdashboard', {
+      res.render('assignments', {
         assignments,
         loggedIn: req.session.loggedIn
       });
@@ -53,11 +56,11 @@ router.get('/assignments/:thisWeek', (req, res) => {
             attributes: ['username']
         },
         {
-          model: curricula,
+          model: Curricula,
           attributes: ['curricula_id']
         },
         {
-          model: subjects,
+          model: Subjects,
           attributes: ['subject_id']
         }
     ]

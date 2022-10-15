@@ -25,10 +25,6 @@ Students.init(
         type: DataTypes.INTEGER,
         allowNull: true
     },
-    assignments_completed: {
-        type: DataTypes.BOOLEAN,
-        allowNull: true
-    },
     user_id: {
         type: DataTypes.INTEGER,
         references: {
@@ -41,7 +37,7 @@ Students.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'post'
+        modelName: 'Students'
     }
 );
 

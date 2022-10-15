@@ -5,7 +5,6 @@ USE smart homies;
 CREATE TABLE subjects (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
-    curricula VARCHAR(30),
     standard VARCHAR(30)
 );
 
@@ -33,5 +32,4 @@ CREATE TABLE students (
     last_name VARCHAR(30) NOT NULL,
     first_name VARCHAR(30) NOT NULL,
     grade VARCHAR(50) NOT NULL,
-    assignments_completed INTEGER
 );
