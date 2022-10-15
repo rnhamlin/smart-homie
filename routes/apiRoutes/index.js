@@ -6,9 +6,9 @@ const postRoutes = require('./post-routes');
 const assignmentRoutes = require('./assignmentRoutes.js');
 const studentRoutes = require('./studentRoutes');
 
-router.use('/users', userRoutes);
-router.use('/posts', postRoutes);
-router.use('/assignments', assignmentRoutes); 
-router.use('/students', studentRoutes);
+router.use('/user-routes', userRoutes);
+router.use('/post-routes', postRoutes);
+router.use('/assignmentRoutes', assignmentRoutes); 
+router.use('/studentRoutes', studentRoutes);
 
 module.exports = router;
