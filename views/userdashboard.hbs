@@ -80,7 +80,15 @@
         <article class="tile is-child box">
           <h3 class="title is-3">You're Working On:</h3>
           <p class="subtitle">A list of assignments will show here.</p>
-          <button>Click Here when you Finish this Assignment</button>
+            <ol class="assignments-list">
+              {{#each assignments}}
+              <li><div class="title">{{title}}</div></li>
+              <li><div class="curricula">{{curricula_id}}</div></li>
+              <li><div class="grade">{{grade}}</div></li>
+              <li><div class="subject">{{subject_id}}</div></li>
+              {{/each}}
+            </ol>
+        <button>Click Here when you Finish this Assignment</button>
         </article>
       </div>
 
