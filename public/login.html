@@ -15,87 +15,62 @@
 
   <body>
     <!--Hero Section-->
-    <section class="hero is-success is-halfheight">
+    <section class="hero is-success">
       <div class="hero-body">
-        <div class="">
-          <h2 class="title is-1">Smart Homie</h2>
-        </div>
+        <h2 class="title is-1">Smart Homie</h2>
+        <p class="subtitle">Log-in / Sign-up / Log-out</p>
       </div>
     </section>
 
-    <!-- Login Section -->
-    <form>
-      <div class="box">
-        <div>
-          <h1>Login here</h1>
-          <div>
-            <label for="email-login">email:</label>
-            <div class="control">
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical">
+        <div class="tile">
+          <!-- Login Section -->
+          <div class="tile is-parent is-vertical">
+            <article class="tile is-child notification is-warning">
+              <p class="title">Log in here</p>
+              <label for="email-login">Email:</label>
               <input
                 class="input"
                 type="email"
                 placeholder="e.g. alex@example.com"
               />
-            </div>
-          </div>
-        </div>
-        <div>
-          <div>
-            <label for="password-login">password:</label>
-            <div class="control">
+              <label for="password-login">Password:</label>
               <input class="input" type="password" placeholder="********" />
-            </div>
+              <a href="/userdashboard.html" type="submit" class="button"
+                >Login</a
+              >
+            </article>
           </div>
-        </div>
-        <div>
-          <div>
-            <a href="/userdashboard.html" type="submit" class="button">login</a>
-          </div>
-        </div>
-      </div>
-    </form>
-
-    <form>
-      <div class="box">
-        <div>
-          <h1>Signup here</h1>
-          <div>
-            <label for="username-signup">username:</label>
-            <div class="control">
+          <!-- Signup Section -->
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-info">
+              <p class="title">Sign-up Here.</p>
+              <label for="username-signup">Username</label>
               <input class="input" type="username" placeholder="e.g. alex234" />
-            </div>
-          </div>
-          <div>
-            <label for="email-signup">email:</label>
-            <div class="control">
+              <label for="email-signup">Email:</label>
               <input
                 class="input"
                 type="email"
                 placeholder="e.g. alex@example.com"
               />
-            </div>
-          </div>
-          <div>
-            <label for="password-signup">password:</label>
-            <div class="control">
+              <label for="password-signup">Password:</label>
               <input class="input" type="password" placeholder="********" />
-            </div>
+              <a href="/userdashboard.html" type="submit" class="button"
+                >Signup</a
+              >
+            </article>
           </div>
-          <div>
-            <a href="/userdashboard.html" type="submit" class="button"
-              >signup</a
-            >
+          <!-- Log-out Section -->
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-danger is-10">
+              <p class="title">Log Out Here.</p>
+              <a href="/index.html" type="submit" class="button">Log out</a>
+            </article>
           </div>
         </div>
       </div>
-    </form>
-
-    <form class="box">
-      <h1>Log out here</h1>
-      <div>
-        <a href="/index.html" type="submit" class="button">Log out</a>
-      </div>
-    </form>
+    </div>
 
     <!--Footer Section-->
     <footer class="footer">

@@ -51,3 +51,38 @@ app.use((req, res) => {
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
+
+//landing page
+app.get("/", (req, res) => {
+  res.render("main", { title: "Smart Homie" });
+});
+
+//userdashboard page
+app.get("/userdashboard", (req, res) => {
+  res.render("userdashboard", { title: "User Dashboard" });
+});
+
+//discussion-board page
+app.get("/discussion", (req, res) => {
+  res.render("discussion");
+});
+
+//calendar page
+app.get("/calendar", (req, res) => {
+  res.render("calendar");
+});
+
+//grades page
+app.get("/grades", (req, res) => {
+  res.render("grades");
+});
+
+//resources page
+app.get("/", (req, res) => {
+  res.render("main");
+});
+
+//not found
+app.get("*", (req, res) => {
+  res.render("notfound", { message: "Sorry, page not found." });
+});
