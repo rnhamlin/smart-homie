@@ -15,10 +15,10 @@ CONSTRAINT fk_subjects FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELET
 CREATE TABLE assignments (
 id INTEGER AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(30) NOT NULL,
-curricula_id INTEGER,
+-- curricula_id INTEGER,
 grade INTEGER,
-subject_id INTEGER,
-this_week BOOLEAN NOT NULL,
+subject VARCHAR(30),
+-- this_week BOOLEAN NOT NULL,
 completed BOOLEAN NOT NULL,
 CONSTRAINT fk_curricula FOREIGN KEY (curricula_id) REFERENCES curricula(id) ON DELETE SET NULL,
 CONSTRAINT fk_subject FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE SET NULL

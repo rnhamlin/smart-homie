@@ -1,10 +1,11 @@
+INSERT INTO standards ()
 INSERT INTO subjects (name, curricula, standard)
 VALUES
   ('Reading', null, 'Language Arts'),
   ('Handwriting', null, 'Language Arts'),
   ('Addition', null, 'Math'),
   ('Geometry', null, 'Math'),
-  ('Geography', null, 'History-Social Studies'),
+  ('Geography', null, 'Social Studies'),
   ('Painting', null, 'Arts'),
   ('Biology', null, 'Science'),
   ('Typing', 'Keyboarding without Tears', 'Computer Science');
