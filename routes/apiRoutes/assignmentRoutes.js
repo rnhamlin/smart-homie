@@ -1,54 +1,97 @@
 const router = require('express').Router();
+const sequelize = require('../../config/connection'); 
 const { Assignments, User, Post } = require('../../models');
 
 //get all assignments
-router.get('/', (req, res) => {
+router.get('/assignments', (req, res) => {
     console.log('======');
     Assignments.findAll({
-        attributes: ['id', 'title', 'curricula_id', 'grade', 'subject_id', 'thisWeek', 'completed', 'created_at'],
+        attributes: ['id', 'title', 'curricula_id', 'grade', 'subject_id', 'thisWeek', 'completed', 'created_at'
+        [sequelize.literal('(SELECT COUNT(*) FROM assignments)'), 'user-id']],
         order: [['created_at', 'DESC']],
         include: [
             {
                 model: User,
                 attributes: ['username']
+            },
+            {
+              model: curricula,
+              attributes: ['curricula_id']
+            },
+            {
+              model: subjects,
+              attributes: ['subject_id']
             }
         ]
     })
-    .then(dbAssignmentsData => res.json(dbAssignmentsData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
+    .then(dbAssignmentsData => {
+      const assignments = dbAssignmentsData.map(assignments => assignments.get({ plain: true }));
+      
+      res.render('userdashboard', {
+        assignments,
+        loggedIn: req.session.loggedIn
+      });
+    })
+    .catch(err=> {
+      console.log(err);
+      res.status(500).json(err);
     });
-});
+  }); 
 
-//get one assignment
-router.get('/:id', (req, res) => {
+//get assignments to complete this week
+router.get('/assignments/:thisWeek', (req, res) => {
     Assignments.findOne({
         where: {
             id: req.params.id
         },
-        attributes: ['id', 'title', 'curricula_id', 'grade', 'subject_id', 'thisWeek', 'completed', 'created_at'],
-        include: [
-            {
-                model: User,
-                attributes: ['username']
-            }
-        ]
+        attributes: ['id', 'title', 'curricula_id', 'grade', 'subject_id', 'thisWeek', 'completed', 'created_at',
+        [sequelize.literal('(SELECT COUNT(*) FROM assignments WHERE assigment.thisWeek = true'), 'thisWeek']
+      ],
+      include: [
+        {
+            model: User,
+            attributes: ['username']
+        },
+        {
+          model: curricula,
+          attributes: ['curricula_id']
+        },
+        {
+          model: subjects,
+          attributes: ['subject_id']
+        }
+    ]
     })
     .then(dbAssignmentsData => {
         if(!dbAssignmentsData) {
             res.status(404).json({ message: 'No assignment found with this id' });
             return;
         }
-        res.json(dbAssignmentsData);
-    })
-    .catch(err => {
+
+        const assignments = dbAssignmentsData.get({ plain: true });
+        
+        res.render('thisWeek', {
+          assignments,
+          loggedIn: req.session.loggedIn
+        });
+      })
+      .catch(err=> {
         console.log(err);
         res.status(500).json(err);
+      });
     });
-});
 
-//create an assignment (how to capture this input eg ids from other table, booleans - modal form field in front end js, sends values to db how/where???)
+    router.get('/login', (req, res) => {
+      if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+      }
+
+      res.render('login');
+    });
+
+
+//create an assignment
 router.post('/', (req, res) => {
     Assignments.create({
         title: req.body.title,

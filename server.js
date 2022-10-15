@@ -33,13 +33,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public'))); 
 
-app.use(require('./controllers'));
-
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Use apiRoutes (should this be simply "routes"?)
+// Use apiRoutes 
 app.use('/api', apiRoutes);
 
 // Default response for any other request (Not Found)
