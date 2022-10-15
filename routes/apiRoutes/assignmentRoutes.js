@@ -6,7 +6,7 @@ const { Assignments, Students, Subjects, Curricula, User, Post } = require('../.
 router.get('/assignments', (req, res) => {
     Assignments.findAll({
         attributes: ['id', 'title', 'curricula_id', 'grade', 'subject_id', 'thisWeek', 'completed', 'created_at'
-        [sequelize.literal('(SELECT COUNT(*) FROM assignments)'), 'assignments']],
+        [sequelize.literal('(SELECT * FROM assignments)'), 'assignments']],
         order: [['created_at', 'DESC']],
         include: [
             {
@@ -48,7 +48,7 @@ router.get('/assignments/:thisWeek', (req, res) => {
             id: req.params.id
         },
         attributes: ['id', 'title', 'curricula_id', 'grade', 'subject_id', 'thisWeek', 'completed', 'created_at',
-        [sequelize.literal('(SELECT COUNT(*) FROM assignments WHERE assigment.thisWeek = true'), 'thisWeek']
+        [sequelize.literal('(SELECT * FROM assignments WHERE assigment.thisWeek = true'), 'thisWeek']
       ],
       include: [
         {
