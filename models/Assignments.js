@@ -11,45 +11,45 @@ Assignments.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: true
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     curricula_id: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: true
     },
     grade: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: true
     },
     subject_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: true
     },
     thisWeek: {
       type: DataTypes.BOOLEAN,
-      allowNull: true,
+      allowNull: true
     },
     completed: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
+      allowNull: false
     },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "user",
-        key: "id",
-      },
-    },
+        key: "id"
+      }
+    }
   },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "Assignments",
+    modelName: "Assignments"
   }
 );
 

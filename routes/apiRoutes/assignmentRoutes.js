@@ -2,70 +2,16 @@ const router = require("express").Router();
 const sequelize = require("../../config/connection");
 const {
   Assignments,
-  Students,
   Subjects,
   Curricula,
   User,
-  Post,
+  Post
 } = require("../../models");
 
 //get all assignments
-router.get("/assignments", (req, res) => {
+router.get("/", (req, res) => {
   Assignments.findAll({
-    attributes: [
-      "id",
-      "title",
-      "curricula_id",
-      "grade",
-      "subject_id",
-      "thisWeek",
-      "completed",
-      "created_at"[
-        (sequelize.literal("(SELECT * FROM assignments)"), "assignments")
-      ],
-    ],
     order: [["created_at", "DESC"]],
-    include: [
-      {
-        model: User,
-        attributes: ["username"],
-      },
-      {
-        model: Curricula,
-        attributes: ["curricula_id"],
-      },
-      {
-        model: Subjects,
-        attributes: ["subject_id"],
-      },
-      {
-        model: Students,
-        attributes: ["student_id"],
-      },
-    ],
-  })
-    .then((dbAssignmentsData) => {
-      const assignments = dbAssignmentsData.map((assignments) =>
-        assignments.get({ plain: true })
-      );
-
-      res.render("assignments", {
-        assignments,
-        loggedIn: req.session.loggedIn,
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-//get assignments to complete this week
-router.get("/assignments/:thisWeek", (req, res) => {
-  Assignments.findOne({
-    where: {
-      id: req.params.id,
-    },
     attributes: [
       "id",
       "title",
@@ -76,26 +22,73 @@ router.get("/assignments/:thisWeek", (req, res) => {
       "completed",
       "created_at",
       [
-        sequelize.literal(
-          "(SELECT * FROM assignments WHERE assigment.thisWeek = true"
-        ),
-        "thisWeek",
-      ],
+        (sequelize.literal("(SELECT * FROM assignments)"), "assignments")
+      ]
     ],
     include: [
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["username"]
       },
       {
         model: Curricula,
-        attributes: ["curricula_id"],
+        attributes: ["curricula_id"]
       },
       {
         model: Subjects,
-        attributes: ["subject_id"],
-      },
+        attributes: ["subject_id"]
+      }
+    ]
+  })
+    .then((dbAssignmentsData) => 
+    {
+      const assignments = dbAssignmentsData.map((assignments) =>
+        assignments.get({ plain: true })
+      );
+      res.render("assignments", {
+        assignments,
+        loggedIn: req.session.loggedIn
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+//get assignments to complete this week
+router.get("/:thisWeek", (req, res) => {
+  Assignments.findOne({
+    attributes: [
+      "id",
+      "title",
+      "curricula_id",
+      "grade",
+      "subject_id",
+      "thisWeek",
+      "completed",
+      "created_at"
+      [
+        sequelize.literal(
+          "(SELECT * FROM assignments WHERE assigments.thisWeek = true"
+        ),
+        "thisWeek"
+      ]
     ],
+    include: [
+      {
+        model: User,
+        attributes: ["username"]
+      },
+      {
+        model: Curricula,
+        attributes: ["curricula_id"]
+      },
+      {
+        model: Subjects,
+        attributes: ["subject_id"]
+      }
+    ]
   })
     .then((dbAssignmentsData) => {
       if (!dbAssignmentsData) {
@@ -103,11 +96,11 @@ router.get("/assignments/:thisWeek", (req, res) => {
         return;
       }
 
-      const assignments = dbAssignmentsData.get({ plain: true });
+      const thisWeek = dbAssignmentsData.get({ plain: true });
 
       res.render("thisWeek", {
-        assignments,
-        loggedIn: req.session.loggedIn,
+        thisWeek,
+        loggedIn: req.session.loggedIn
       });
     })
     .catch((err) => {
@@ -134,7 +127,7 @@ router.post("/", (req, res) => {
     subject_id: req.body.subject_id,
     thisWeek: req.body.thisWeek,
     completed: req.body.completed,
-    user_id: req.body.user_id,
+    user_id: req.body.user_id
   })
     .then((dbAssignmentsData) => res.json(dbAssignmentsData))
     .catch((err) => {
@@ -143,29 +136,22 @@ router.post("/", (req, res) => {
     });
 });
 
-//update assignment's completion status (will need front end js for this on logged-in user page, a modal with dropdown of assignments, select, check "complete"?, sequelize will record date of update?)
+//update assignment's completion status (will need front end js for this on logged-in user page)
 router.put("/:id", (req, res) => {
   Assignments.update(
     {
-      completed: req.body.completed,
+      completed: req.body.completed
     },
     {
       where: {
-        id: req.params.id,
+        id: req.params.id
       },
     }
   )
-    .then((dbAssignmentsData) => {
-      if (!dbAssignmentsData) {
-        res.status(404).json({ message: "No assignments found with this id" });
-        return;
-      }
-      res.json(dbAssignmentsData);
-    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
-    }); //check order, no .then on put method
+    }); //check order, no .then on put method; right, thanks, Gracie! fixed
 });
 
 //delete an assignment

@@ -1,13 +1,5 @@
 USE smart homies;
 
-INSERT INTO students 
-  (last_name, first_name, grade)
-VALUES
-('Duck', 'Daffy', 1),
-('Fudd', 'Elmer', 2),
-('Bunny', 'Bugs', 3),
-('Coyote', 'Wily', 4);
-
 INSERT INTO subjects 
   (name, curricula, standard)
 VALUES
@@ -38,3 +30,12 @@ VALUES
   ('I have big feelings', 2, 4, 1, true, false),
   ('Level 2', 3, 6, 2, false, false),
   ('Chemical and Physical Changes', 7, 3, 3, true, true);
+
+  
+INSERT INTO students 
+  (last_name, first_name, grade)
+VALUES
+('Duck', 'Daffy', 1),
+('Fudd', 'Elmer', 2),
+('Bunny', 'Bugs', 3),
+('Coyote', 'Wily', 4);
