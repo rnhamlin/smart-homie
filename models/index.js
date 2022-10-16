@@ -21,7 +21,7 @@ User.hasMany(Subjects, {
   foreignKey: "user_id"
 });
 
-Subjects.hasMany(Curricula, {
+Subjects.belongsTo(Curricula, {
   foreignKey: "subjects_id"
 });
 
@@ -33,7 +33,7 @@ Post.belongsTo(User, {
   foreignKey: "user_id"
 });
 
-Assignments.hasMany(User, {
+Assignments.belongsTo(User, {
   foreignKey: "user_id"
 });
 
