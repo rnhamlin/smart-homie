@@ -3,7 +3,7 @@
       <div class="hero-body">
         <div>
           <h2 class="title is-1">Smart Homie</h2>
-          <p class="subtitle">Welcome to your user Dashboard!</p>
+          <p class="subtitle">Welcome to your user dashboard!</p>
         </div>
         <!--Homie Hangout Section-->
         <div class="container is-max-desktop">
@@ -81,11 +81,11 @@
           <h3 class="title is-3">You're Working On:</h3>
           <p class="subtitle">A list of assignments will show here.</p>
             <ol class="assignments-list">
-              {{#each assignments}}
-              <li><div class="title">{{title}}</div></li>
-              <li><div class="curricula">{{curricula_id}}</div></li>
-              <li><div class="grade">{{grade}}</div></li>
-              <li><div class="subject">{{subject_id}}</div></li>
+              {{#each Assignments}}
+              <li><div class="title">{{Assignments.title}}</div></li>
+              <li><div class="curricula">{{Assignments.curricula_id}}</div></li>
+              <li><div class="grade">{{Assignments.grade}}</div></li>
+              <li><div class="subject">{{Assignments.subject_id}}</div></li>
               {{/each}}
             </ol>
         <button>Click Here when you Finish this Assignment</button>
@@ -97,6 +97,15 @@
           <h3 class="title is-3">Look What You've Accomplished!</h3>
           <div class="content">
             <p>List of finished assignments will show here.</p>
+            <ol class="assignments-list">
+              {{#each Assignments}}
+              <li><div class="title">{{Assignments.title}}</div></li>
+              <li><div class="curricula">{{Assignments.curricula_id}}</div></li>
+              <li><div class="grade">{{Assignments.grade}}</div></li>
+              <li><div class="subject">{{Assignments.subject_id}}</div></li>
+              <li><div class="subject">{{Assignments.completed}}</div></li>
+              {{/each}}
+            </ol>            
           </div>
         </article>
       </div>

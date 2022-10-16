@@ -29,3 +29,7 @@ function marsWeather() {
       console.log(data);
     });
 }
+
+//event listener
+document.getElementById(randomWord).addEventListener("click");
+document.getElementById(marsWeather).addEventListener("click");
