@@ -2,6 +2,13 @@ DROP DATABASE IF EXISTS smart homies;
 CREATE DATABASE smart homies;
 USE smart homies;
 
+CREATE TABLE students (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    last_name VARCHAR(30) NOT NULL,
+    first_name VARCHAR(30) NOT NULL,
+    grade VARCHAR(50) NOT NULL,
+);
+
 CREATE TABLE subjects (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
@@ -26,10 +33,3 @@ CREATE TABLE assignments (
     CONSTRAINT fk_curricula FOREIGN KEY (curricula_id) REFERENCES curricula(id) ON DELETE SET NULL,
     CONSTRAINT fk_subject FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE SET NULL
     );
-
-CREATE TABLE students (
-    id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    last_name VARCHAR(30) NOT NULL,
-    first_name VARCHAR(30) NOT NULL,
-    grade VARCHAR(50) NOT NULL,
-);
