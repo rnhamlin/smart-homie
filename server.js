@@ -27,12 +27,12 @@ const helpers = require("./utils/helpers");
 const hbs = exphbs.create({ helpers });
 
 //handlebars setting
-app.set("view engine", "hbs");
 app.engine("hbs", hbs.engine);
+app.set("view engine", "hbs");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 //body parser
 app.use(bodyParser.json());
@@ -56,17 +56,17 @@ app.use((req, res) => {
   res.status(404).end();
 });
 
-// Start server after DB connection
-// db.connect(err => {
+//Start server after DB connection
+// db.connect((err) => {
 //   if (err) throw err;
-//   console.log('Database connected.');
+//   console.log("Database connected.");
 //   app.listen(PORT, () => {
 //     console.log(`Server running on port ${PORT}`);
 //   });
 // });
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log("Now listening."));
+  app.listen(PORT, () => console.log("Now listening"));
 });
 
 sequelize
@@ -105,7 +105,7 @@ app.get("grades", (req, res) => {
 
 //resources page
 app.get("resources", (req, res) => {
-  res.render("resources", { subtitle: "Recources" });
+  res.render("resources", { subtitle: "Resources" });
 });
 
 //not found

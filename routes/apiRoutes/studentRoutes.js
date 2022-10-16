@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const db = require('../../config/connection');
+const db = require("../../config/connection");
 
 // Get all students alphabetized by last name
-router.get('/students', (req, res) => {
+router.get("/students", (req, res) => {
   const sql = `SELECT * FROM students ORDER BY last_name`;
   db.query(sql, (err, rows) => {
     if (err) {
@@ -11,29 +11,29 @@ router.get('/students', (req, res) => {
       return;
     }
     res.json({
-      message: 'success',
-      data: rows
+      message: "success",
+      data: rows,
     });
   });
 });
 
 // Get all students listed by grade (will this work, router route?)
-router.get('/students/:grade', (req, res) => {
-    const sql = `SELECT * FROM students ORDER BY grade`;
-    db.query(sql, (err, rows) => {
-      if (err) {
-        res.status(500).json({ error: err.message });
-        return;
-      }
-      res.json({
-        message: 'success',
-        data: rows
-      });
+router.get("/students/:grade", (req, res) => {
+  const sql = `SELECT * FROM students ORDER BY grade`;
+  db.query(sql, (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: "success",
+      data: rows,
     });
   });
+});
 
 // Get single student
-router.get('/student/:id', (req, res) => {
+router.get("/student/:id", (req, res) => {
   const sql = `SELECT * FROM students WHERE id = ?`;
   const params = [req.params.id];
   db.query(sql, params, (err, row) => {
@@ -42,14 +42,14 @@ router.get('/student/:id', (req, res) => {
       return;
     }
     res.json({
-      message: 'success',
-      data: row
+      message: "success",
+      data: row,
     });
   });
 });
 
 // Create a student
-router.post('/student', ({ body }, res) => {
+router.post("/student", ({ body }, res) => {
   const sql = `INSERT INTO students (last_name, first_name, grade) VALUES (?,?,?)`;
   const params = [body.last_name, body.first_name, body.grade];
   db.query(sql, params, (err, result) => {
@@ -58,14 +58,14 @@ router.post('/student', ({ body }, res) => {
       return;
     }
     res.json({
-      message: 'success',
-      data: body
+      message: "success",
+      data: body,
     });
   });
 });
 
 // Update a student's grade
-router.put('/student/:id', (req, res) => {
+router.put("/student/:id", (req, res) => {
   const sql = `UPDATE students SET grade = ? WHERE id = ?`;
   const params = [req.body.grade, req.params.id];
   db.query(sql, params, (err, result) => {
@@ -73,33 +73,33 @@ router.put('/student/:id', (req, res) => {
       res.status(400).json({ error: err.message });
     } else if (!result.affectedRows) {
       res.json({
-        message: 'Student not found'
+        message: "Student not found",
       });
     } else {
       res.json({
-        message: 'success',
+        message: "success",
         data: req.body,
-        changes: result.affectedRows
+        changes: result.affectedRows,
       });
     }
   });
 });
 
 // Delete a student
-router.delete('/student/:id', (req, res) => {
+router.delete("/student/:id", (req, res) => {
   const sql = `DELETE FROM students WHERE id = ?`;
   db.query(sql, req.params.id, (err, result) => {
     if (err) {
       res.status(400).json({ error: res.message });
     } else if (!result.affectedRows) {
       res.json({
-        message: 'Student not found'
+        message: "Student not found",
       });
     } else {
       res.json({
-        message: 'deleted',
+        message: "deleted",
         changes: result.affectedRows,
-        id: req.params.id
+        id: req.params.id,
       });
     }
   });
