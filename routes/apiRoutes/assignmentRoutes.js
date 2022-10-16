@@ -40,13 +40,14 @@ router.get("/", (req, res) => {
       }
     ]
   })
-    .then((dbAssignmentsData) => {
+    .then((dbAssignmentsData) => 
+    {
       const assignments = dbAssignmentsData.map((assignments) =>
         assignments.get({ plain: true })
       );
       res.render("assignments", {
         assignments,
-        loggedIn: req.session.loggedIn,
+        loggedIn: req.session.loggedIn
       });
     })
     .catch((err) => {
@@ -56,11 +57,8 @@ router.get("/", (req, res) => {
 });
 
 //get assignments to complete this week
-router.get("/assignments/:thisWeek", (req, res) => {
+router.get("/:thisWeek", (req, res) => {
   Assignments.findOne({
-    where: {
-      id: req.params.id
-    },
     attributes: [
       "id",
       "title",
@@ -69,10 +67,10 @@ router.get("/assignments/:thisWeek", (req, res) => {
       "subject_id",
       "thisWeek",
       "completed",
-      "created_at",
+      "created_at"
       [
         sequelize.literal(
-          "(SELECT * FROM assignments WHERE assigment.thisWeek = true"
+          "(SELECT * FROM assignments WHERE assigments.thisWeek = true"
         ),
         "thisWeek"
       ]
@@ -80,11 +78,11 @@ router.get("/assignments/:thisWeek", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["username"]
       },
       {
         model: Curricula,
-        attributes: ["curricula_id"],
+        attributes: ["curricula_id"]
       },
       {
         model: Subjects,
@@ -98,11 +96,11 @@ router.get("/assignments/:thisWeek", (req, res) => {
         return;
       }
 
-      const assignments = dbAssignmentsData.get({ plain: true });
+      const thisWeek = dbAssignmentsData.get({ plain: true });
 
       res.render("thisWeek", {
-        assignments,
-        loggedIn: req.session.loggedIn,
+        thisWeek,
+        loggedIn: req.session.loggedIn
       });
     })
     .catch((err) => {
@@ -129,7 +127,7 @@ router.post("/", (req, res) => {
     subject_id: req.body.subject_id,
     thisWeek: req.body.thisWeek,
     completed: req.body.completed,
-    user_id: req.body.user_id,
+    user_id: req.body.user_id
   })
     .then((dbAssignmentsData) => res.json(dbAssignmentsData))
     .catch((err) => {
@@ -142,11 +140,11 @@ router.post("/", (req, res) => {
 router.put("/:id", (req, res) => {
   Assignments.update(
     {
-      completed: req.body.completed,
+      completed: req.body.completed
     },
     {
       where: {
-        id: req.params.id,
+        id: req.params.id
       },
     }
   )
